@@ -29,30 +29,42 @@ class _FavoriteState extends State<Favorite> {
       body: Obx(
             () => favoriteController.playerController.favoriteSongs.isEmpty
             ? Center(
-          child: Text(
-            "No Favorites Yet",
-            style: myStyle(),
-          ),
-        )
-            : ListView.builder(
-          itemCount: favoriteController.playerController.favoriteSongs.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              tileColor: bgColor,
-              title: Text(
-                favoriteController.playerController.favoriteSongs[index],
-                style: myStyle(family: bold, size: 15),
+              child: Text(
+                "No Favorites Yet",
+                style: myStyle(),
               ),
-              trailing: IconButton(
-                icon: Icon(Icons.delete, color: whiteColor),
-                onPressed: () {
-                  favoriteController.removeFromFavorites(
-                      favoriteController.playerController.favoriteSongs[index]);
+            )
+            : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                itemCount: favoriteController.playerController.favoriteSongs.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.only(bottom: 3),
+                    child: ListTile(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      tileColor: bgColor,
+                      title: Text(
+                        favoriteController.playerController.favoriteSongs[index],
+                        style: myStyle(family: bold, size: 15),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete, color: whiteColor),
+                        onPressed: () {
+                          favoriteController.removeFromFavorites(
+                              favoriteController.playerController.favoriteSongs[index]);
+                        },
+                      ),
+                    ),
+                  );
                 },
               ),
-            );
-          },
-        ),
+            ),
       ),
     );
   }
