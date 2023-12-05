@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_player/const/colors.dart';
-import 'package:music_player/const/icons.dart';
 import 'package:music_player/const/text_style.dart';
 import 'package:music_player/controllers/player_controller.dart';
-import 'package:music_player/views/favorite.dart';
+import 'package:music_player/views/myAppBar.dart';
 import 'package:music_player/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -17,23 +16,7 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: bgDarkColor,
-      appBar: AppBar(
-        backgroundColor: bgDarkColor,
-        actions: [
-          IconButton(
-            onPressed: (){
-              Get.to(Favorite());
-            }, icon: favIcon())
-        ],
-        leading: Icon(Icons.multitrack_audio_rounded, color: whiteColor),
-        title: Text(
-          'My Music',
-          style: myStyle(
-            family: 'bold',
-            size: 18,
-          )
-        ),
-      ),
+      appBar: myAppBar(),
       body: FutureBuilder<List<SongModel>>(
         future: controller.audioQuery.querySongs(
           ignoreCase: true,
