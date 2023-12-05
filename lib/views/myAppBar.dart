@@ -10,17 +10,14 @@ myAppBar() {
     backgroundColor: bgDarkColor,
     actions: [
       IconButton(
-          onPressed: (){
-            Get.to(Favorite());
-          }, icon: favIcon())
+          onPressed: () => Get.to(Favorite()),
+          icon: favIcon(),)
     ],
     leading: Icon(Icons.multitrack_audio_rounded, color: whiteColor),
-    title: Text(
-        'My Music',
+    title: Text('My Music',
         style: myStyle(
           family: 'bold',
           size: 18,
-        )
-    ),
+        )),
   );
 }
