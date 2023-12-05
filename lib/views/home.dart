@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_player/const/colors.dart';
+import 'package:music_player/const/icons.dart';
 import 'package:music_player/const/text_style.dart';
 import 'package:music_player/controllers/player_controller.dart';
 import 'package:music_player/views/favorite.dart';
@@ -22,7 +23,7 @@ class Home extends StatelessWidget {
           IconButton(
             onPressed: (){
               Get.to(Favorite());
-            }, icon: Icon(Icons.favorite, color: whiteColor))
+            }, icon: favIcon())
         ],
         leading: Icon(Icons.multitrack_audio_rounded, color: whiteColor),
         title: Text(

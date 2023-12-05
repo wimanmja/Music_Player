@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_player/const/colors.dart';
+import 'package:music_player/const/icons.dart';
 import 'package:music_player/const/text_style.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import '../controllers/player_controller.dart';
@@ -26,10 +27,7 @@ class Player extends StatelessWidget {
             },
             icon: Obx(() {
               bool isFavorite = favoriteController.favoriteSongs.contains(data[controller.playIndex.value].displayNameWOExt);
-              return Icon(
-                Icons.favorite,
-                color: isFavorite ? Colors.red : whiteColor,
-              );
+              return favIcon(color: isFavorite ? Colors.red : whiteColor);
             }),
           )
         ],
